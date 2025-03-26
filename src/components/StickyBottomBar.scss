@@ -1,0 +1,25 @@
+.sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(100, 49, 49, 0.1);
+    border-top: 1px solid rgba(100, 49, 49, 0.1);
+    z-index: 1000;
+    transform: translateX(-50%);
+
+    .total-text {
+        font-weight: 700;
+    }
+
+    .btn-primary {
+        background: linear-gradient(to right, #3fa9f5, #0066cc);
+        border: none;
+        font-weight: 600;
+
+        &:hover {
+            background: linear-gradient(to right, #2f99e5, #005cb8);
+        }
+    }
+}

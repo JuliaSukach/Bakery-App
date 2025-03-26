@@ -1,70 +1,170 @@
-# Getting Started with Create React App
+Bakery App – Auto1 Frontend Challenge
+=====================================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![bakery shop](https://static.vecteezy.com/system/resources/previews/002/045/877/large_2x/fancy-bakery-shop-with-trees-and-bike-vector.jpg)
 
-## Available Scripts
+Overview
+--------
 
-In the project directory, you can run:
+This application is a solution to the Auto1 Frontend Challenge for a local bakery that wants to offer its products online. The app allows customers to browse a list of bakery products, adjust the quantity they wish to order, see a live updated total, and submit orders. It also handles error states gracefully, supports responsive design for both mobile and desktop views, and follows modern accessibility practices.
 
-### `yarn start`
+Features
+--------
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*   **Product Listing:**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    *   Fetches product data from an API (`/api/storage`).
 
-### `yarn test`
+    *   Displays product name, thumbnail, price, and available stock.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    *   Adjusts available stock dynamically based on items added to the cart.
 
-### `yarn build`
+*   **Cart Functionality:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    *   Users can increase or decrease the quantity of products.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    *   Cart state is persisted using local storage.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    *   Displays a live-updating total price.
 
-### `yarn eject`
+    *   Uses a modern, sticky bottom bar on mobile to keep the checkout button always in view.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+*   **Order Submission:**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    *   Submits orders via a POST request to `/api/order`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    *   Displays a success page upon successful order submission.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    *   Implements error handling using react‑toastify (toast notifications) and a full‑screen error UI when products fail to load.
 
-## Learn More
+*   **Responsive Design:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    *   Mobile: Uses Flexbox for a single-column layout with a sticky bottom bar.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    *   Desktop: Uses CSS Grid (or media queries) to display multiple columns of product cards.
 
-### Code Splitting
+*   **Accessibility & ARIA:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    *   Uses semantic HTML elements (e.g., `<main>`).
 
-### Analyzing the Bundle Size
+    *   Provides descriptive alt text for images and aria-labels for interactive buttons.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    *   Dynamic error messages are announced using ARIA live regions via toast notifications.
 
-### Making a Progressive Web App
+*   **Environment Configuration:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    *   Avoids hardcoding API URLs by using a proxy (in Create React App)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Technical Stack
+---------------
 
-### Deployment
+*   **Frontend:** React, Bootstrap 5, SCSS, react‑toastify.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+*   **Backend:** Express with a simple API for product storage and order processing.
 
-### `yarn build` fails to minify
+*   **Tooling:** Create React App (or similar), and npm scripts.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Folder Structure
+----------------
+
+```A1G-FE-challenge/
+├── client/
+│   ├── public/
+│   │   └── images/         # Product images and fallback default image
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Cart.tsx
+│   │   │   ├── ProductsList.scss
+│   │   │   ├── ProductsList.tsx
+│   │   │   ├── StickyBottomBar.scss
+│   │   │   ├── StickyBottomBar.tsx
+│   │   │   ├── SuccessPage.scss
+│   │   │   └── SuccessPage.tsx
+│   │   ├── App.tsx
+│   │   └── App.scss
+│   └── package.json
+└── index.js                # Express API server
+```
+
+
+
+Setup and Run
+-------------
+
+### **Backend**
+
+1. Open a terminal in the project root:
+```
+    cd A1G-FE-challenge
+    npm install
+    npm run start
+```
+The server runs on `http://localhost:3001`.
+
+
+### **Frontend**
+
+1.  Open another terminal in the client directory:
+```
+    cd A1G-FE-challenge/client
+    npm install
+```
+
+2.  For development, configure the proxy by adding this to `client/package.json`
+
+```
+    "proxy": "http://localhost:3001"
+```
+
+3.  Start the React app
+```
+    npm run start
+```
+The app runs on `http://localhost:3000`.
+
+
+Accessibility Improvements
+--------------------------
+
+*   **Images:** Each product image includes a descriptive alt attribute.
+
+*   **Buttons:** Interactive buttons (e.g., plus/minus) have aria-label attributes to describe their function.
+
+*   **Semantic Markup:** The app uses semantic elements (such as `main` ) for improved navigation.
+
+
+Responsive Design
+-----------------
+
+*   **Mobile (≤990px):** Uses Flexbox for a simple, vertical layout with a sticky bottom bar that keeps the checkout button in view.
+
+*   **Desktop (>990px):** Uses CSS Grid (or media queries) to display product cards in multiple columns. The layout adjusts to prevent clipping of interactive elements at mid-range widths.
+
+
+Error Handling
+--------------
+
+*   **API Errors:** All fetch calls are wrapped in try/catch blocks.When an error occurs:
+
+    *   A toast notification is shown using react‑toastify.
+
+    *   A full-screen error UI is displayed in the product list area to avoid a blank page.
+
+
+Conclusion
+----------
+
+This solution meets all the requirements of the challenge and includes several enhancements:
+
+*   A responsive, accessible UI.
+
+*   Modern error handling with toast notifications and full-screen error states.
+
+*   A persistent, dynamic cart and a sticky bottom bar for mobile.
+
+*   Clean, modular code with reusable components.
+
+
+Thank you for considering my submission. I look forward to your feedback!

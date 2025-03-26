@@ -1,0 +1,26 @@
+.success-page {
+    min-height: 100vh;
+    background-color: #fff;
+    color: #333;
+
+    h2 {
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    p {
+        margin: 2rem;
+        padding: 0 1rem;
+        color: #a6a8ac;
+    }
+
+    .btn-primary {
+        border-radius: 8px;
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+}

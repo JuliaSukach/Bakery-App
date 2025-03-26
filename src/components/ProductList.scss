@@ -1,0 +1,70 @@
+@import '~bootstrap/scss/bootstrap'; // Import Bootstrap styles
+
+.product-list {
+    padding-bottom: 80px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+
+    .container-title {
+        font-weight: 600;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 32px;
+
+        @media screen and (min-width: 990px) and (max-width: 1239px) {
+            grid-template-columns: repeat(2, 1fr)
+        }
+
+        @media screen and (max-width: 990px) {
+            display: flex;
+            grid-gap: unset;
+            flex-direction: column;
+
+            .products-container {
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        .cart {
+            .card-body {
+                .cart-text {
+                    color: #999;
+                    font-size: 14px;
+                }
+
+                .circle-btn {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: #d1d5db;
+                    border: none;
+                    color: #000;
+                    font-size: 1.25rem;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: background-color 0.2s ease;
+
+                    &:hover {
+                        background-color: #c1c5cb;
+                    }
+
+                    &:disabled {
+                        background-color: #e7e7e7;
+                        color: #999;
+                        cursor: not-allowed;
+                        opacity: 0.7;
+                    }
+                }
+            }
+            
+            &.out-of-stock {
+                opacity: 0.5;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-Bakery App – Auto1 Frontend Challenge
+Bakery App
 =====================================
 
 ![bakery shop](https://static.vecteezy.com/system/resources/previews/002/045/877/large_2x/fancy-bakery-shop-with-trees-and-bike-vector.jpg)
